@@ -1,0 +1,50 @@
+<!--<org.lucasr.dspec.DesignSpecFrameLayout android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!---->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--app:designSpec="@raw/spec">-->
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFEEEEEE"
+        android:clickable="true"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        tools:context="com.pranav.materialdesigncardview.Navigation_Fragment"
+        >
+
+        <LinearLayout
+            android:id="@+id/containerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FB8B00"
+            android:orientation="vertical">
+
+            <ImageView
+
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@drawable/ironthrone" />
+
+            <!-- TODO: Update blank fragment layout -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:text="A song of Fire and Ice" />
+        </LinearLayout>
+
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:id="@+id/recyclerList_drawer"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.88">
+
+        </android.support.v7.widget.RecyclerView>
+
+
+    </LinearLayout>
+
+<!--</org.lucasr.dspec.DesignSpecFrameLayout>-->
