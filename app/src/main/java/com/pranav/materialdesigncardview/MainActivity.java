@@ -14,8 +14,10 @@ import android.support.v7.widget.Toolbar;
 import android.transition.Explode;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
@@ -63,4 +65,8 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
+
+
+
 }
+

@@ -40,6 +40,7 @@
             android:layout_width="match_parent"
             android:id="@+id/recyclerList_drawer"
             android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
             android:layout_weight="0.88">
 
         </android.support.v7.widget.RecyclerView>

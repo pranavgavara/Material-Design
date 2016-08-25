@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorPrimary"
-    app:theme="@style/myCustomToolBar"
-    app:popupTheme="@style/ThemeOverlay.AppCompat.Dark">
+    android:theme="@style/myCustomToolBar"
+    android:popupTheme="@style/ThemeOverlay.AppCompat.Dark">
 
 </android.support.v7.widget.Toolbar>
