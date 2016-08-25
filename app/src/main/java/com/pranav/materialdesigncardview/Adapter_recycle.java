@@ -73,7 +73,7 @@ class myViewHolder extends RecyclerView.ViewHolder {
 
         public myViewHolder(View itemView) {
             super(itemView);
-            cardView = (CardView) itemView.findViewById(R.id.cardview);
+//            cardView = (CardView) itemView.findViewById(R.id.cardview);
             textView = (TextView) itemView.findViewById(R.id.list_text);
             imageView = (ImageView) itemView.findViewById(R.id.list_icon);
         }
