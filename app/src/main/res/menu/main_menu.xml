@@ -2,14 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_favorite"
+        android:id="@+id/recycler_class"
         android:icon="@mipmap/ic_launcher"
-        android:title="action_favorite"
+        android:title="Recycler_view"
         app:showAsAction="ifRoom"/>
 
     <!-- Settings, should always be in the overflow -->
-    <item android:id="@+id/action_settings"
-        android:title="action_settings"
+    <item android:id="@+id/LibraryTabs"
+        android:title="Tabs with Library"
         app:showAsAction="never"/>
 
 

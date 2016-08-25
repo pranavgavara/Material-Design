@@ -15,10 +15,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RecyclerViewActivity"
+        <activity
+            android:name=".RecyclerViewActivity"
             android:label="Recycle">
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".MainActivity"/>
-
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity android:name=".TabswithLibrary">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
         </activity>
     </application>
 
