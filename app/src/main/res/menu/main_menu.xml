@@ -11,6 +11,8 @@
     <item android:id="@+id/LibraryTabs"
         android:title="Tabs with Library"
         app:showAsAction="never"/>
-
+    <item android:id="@+id/cardView"
+        android:title="CardView"
+        app:showAsAction="never"/>
 
 </menu>

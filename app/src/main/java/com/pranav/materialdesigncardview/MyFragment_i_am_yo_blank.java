@@ -10,15 +10,15 @@ import android.widget.TextView;
 /**
  * Created by Pranav on 8/25/2016.
  */
-public class MyFragment extends Fragment {
+public class MyFragment_i_am_yo_blank extends Fragment {
     private TextView textView;
     private int num;
-    public static MyFragment getInstance(int position){
-        MyFragment myFragment=new MyFragment();
+    public static MyFragment_i_am_yo_blank getInstance(int position){
+        MyFragment_i_am_yo_blank myFragmentIamyoblank =new MyFragment_i_am_yo_blank();
         Bundle args=new Bundle();
         args.putInt("position",position+1);
-        myFragment.setArguments(args);
-        return myFragment;
+        myFragmentIamyoblank.setArguments(args);
+        return myFragmentIamyoblank;
     }
 
     @Override

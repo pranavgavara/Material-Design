@@ -7,7 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class RecyclerViewActivity extends AppCompatActivity {
+public class FakeActivity extends AppCompatActivity {
 
     Toolbar toolbar;
 
@@ -21,19 +21,19 @@ public class RecyclerViewActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu,menu);
-        return super.onCreateOptionsMenu(menu);
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.main_menu,menu);
+//        return super.onCreateOptionsMenu(menu);
+//    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id=item.getItemId();
-        if(id==android.R.id.home){
-            NavUtils.navigateUpFromSameTask(this);
-
-        }
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        int id=item.getItemId();
+//        if(id==android.R.id.home){
+//            NavUtils.navigateUpFromSameTask(this);
+//
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 }

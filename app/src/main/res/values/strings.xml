@@ -14,4 +14,16 @@
         <item>TAB 5</item>
         <item>TAB 6</item>
     </string-array>
+    <string-array name="YouTube">
+        <item>Todays Popular Videos</item>
+        <item>Top 50 Songs</item>
+        <item>Video Search</item>
+    </string-array>
+    <string-array name="Menu_Items">
+        <item>Todays Most Popular Videos</item>
+        <item>Tabs with Library</item>
+        <item>Card View</item>
+        <item>RecycleViewAnimator</item>
+        <item>YouTube Search</item>
+    </string-array>
 </resources>

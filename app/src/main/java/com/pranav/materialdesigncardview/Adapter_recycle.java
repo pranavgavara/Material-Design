@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.Collections;
 import java.util.List;
@@ -16,34 +15,51 @@ import java.util.List;
 /**
  * Created by Pranav on 8/23/2016.
  */
-public class Adapter_recycle extends RecyclerView.Adapter<myViewHolder>  {
-    List<Single_Row> data = Collections.EMPTY_LIST;
+public class Adapter_recycle extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+    List<Single_Row_Navigation> data = Collections.EMPTY_LIST;
     private LayoutInflater inflater;
     private Context context;
+    private static final int TYPE_HEADER = 0;
+    private static final int TYPE_ITEM = 1;
 
 
-    public Adapter_recycle(Context context, List<Single_Row> data) {
-        this.context=context;
+    public Adapter_recycle(Context context, List<Single_Row_Navigation> data) {
+        this.context = context;
         inflater = LayoutInflater.from(context);
         this.data = data;
     }
 
 
-
     @Override
-    public myViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.custom_row, parent, false);
-        myViewHolder holder = new myViewHolder(view);
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        if (viewType == TYPE_HEADER) {
+            View view = inflater.inflate(R.layout.drawer_header, parent, false);
+            HeaderHolder holder = new HeaderHolder(view);
 
-        return holder;
+            return holder;
+
+        } else {
+
+
+            View view = inflater.inflate(R.layout.custom_row, parent, false);
+            itemHolder holder = new itemHolder(view);
+
+            return holder;
+        }
     }
 
 
     @Override
-    public void onBindViewHolder(myViewHolder holder, final int position) {
-        Single_Row current = data.get(position);
-        holder.textView.setText(current.title);
-        holder.imageView.setImageResource(current.iconID);
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
+        if(holder instanceof HeaderHolder){
+
+
+        }else {
+            itemHolder itemHolder= (Adapter_recycle.itemHolder) holder;
+            Single_Row_Navigation current = data.get(position-1);
+            itemHolder.textView.setText(current.title);
+            itemHolder.imageView.setImageResource(current.iconID);
+        }
 //        holder.cardView.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -55,23 +71,34 @@ public class Adapter_recycle extends RecyclerView.Adapter<myViewHolder>  {
     }
 
     @Override
-    public int getItemCount() {
-        return data.size();
+    public int getItemViewType(int position) {
+
+        if (position == 0) {
+            return TYPE_HEADER;
+
+        } else {
+            return TYPE_ITEM;
+        }
     }
+
+    @Override
+    public int getItemCount() {
+        return data.size()+1;
+    }
+
     public void delete(int position) {
         data.remove(position);
         notifyItemRemoved(position);
-        notifyItemRangeChanged(position,getItemCount());
+        notifyItemRangeChanged(position, getItemCount());
     }
 
-}
 
-class myViewHolder extends RecyclerView.ViewHolder {
+    static class itemHolder extends RecyclerView.ViewHolder {
         CardView cardView;
         TextView textView;
         ImageView imageView;
 
-        public myViewHolder(View itemView) {
+        public itemHolder(View itemView) {
             super(itemView);
 //            cardView = (CardView) itemView.findViewById(R.id.cardview);
             textView = (TextView) itemView.findViewById(R.id.list_text);
@@ -79,6 +106,15 @@ class myViewHolder extends RecyclerView.ViewHolder {
         }
 
 
+    }
+    static class HeaderHolder extends RecyclerView.ViewHolder {
+
+        public HeaderHolder(View itemView) {
+            super(itemView);
+        }
+
+
+    }
 
 }
 

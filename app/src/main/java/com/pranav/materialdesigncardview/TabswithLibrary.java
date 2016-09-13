@@ -1,6 +1,5 @@
 package com.pranav.materialdesigncardview;
 
-import android.os.PersistableBundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -76,8 +75,8 @@ public class TabswithLibrary extends AppCompatActivity implements MaterialTabLis
 
         @Override
         public Fragment getItem(int position) {
-            MyFragment myFragment=MyFragment.getInstance(position);
-            return myFragment;
+            MyFragment_i_am_yo_blank myFragmentIamyoblank = MyFragment_i_am_yo_blank.getInstance(position);
+            return myFragmentIamyoblank;
         }
 
 

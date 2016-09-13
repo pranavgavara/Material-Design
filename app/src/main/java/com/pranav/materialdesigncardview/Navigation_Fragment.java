@@ -1,11 +1,9 @@
 package com.pranav.materialdesigncardview;
 
 
-import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.TypedArray;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -15,10 +13,9 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.GestureDetector;
+import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +39,7 @@ public class Navigation_Fragment extends Fragment {
     private boolean mUserLearnedDrawer;
     private boolean mFromSavedInstanceState;
     private Adapter_recycle adapter;
+    View layout;
 
 
     public Navigation_Fragment() {
@@ -62,15 +60,31 @@ public class Navigation_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View layout=inflater.inflate(R.layout.fragment_navigation_, container, false);
+        layout=inflater.inflate(R.layout.fragment_navigation_, container, false);
         recyclerView= (RecyclerView) layout.findViewById(R.id.recyclerList_drawer);
         adapter=new Adapter_recycle(getActivity(),getData());
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(adapter);
-        recyclerView.addOnItemTouchListener(new RecycleTouchListener(getActivity(), recyclerView, new ClickListener() {
+        recyclerView.addOnItemTouchListener(new RecycleTouchListener(getActivity(), recyclerView, new RecycleTouchListener.ClickListener() {
             @Override
             public void onClick(View view, int position) {
-                Toast.makeText(getActivity(),"onClick"+position,Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(),"onClick"+position,Toast.LENGTH_SHORT).show();
+                if(position==1){
+                    ((MainActivity)getActivity()).onDrawerItemClicked(position);
+                }
+                else if(position==2){
+                    startActivity(new Intent(getContext(),TabswithLibrary.class));
+                }
+                else if(position==3){
+                    startActivity(new Intent(getContext(),CardViewActivity.class));
+                }
+                else if(position==4){
+                    startActivity(new Intent(getContext(),RecyclerViewAnimatorActivity.class));
+                }
+                else if(position==5){
+                    ((MainActivity)getActivity()).onDrawerItemClicked(position);
+                }
+                mDrawerLayout.closeDrawer(GravityCompat.START);
 
             }
 
@@ -129,12 +143,14 @@ public class Navigation_Fragment extends Fragment {
         });
     }
 
-    public static List<Single_Row> getData(){
-        List<Single_Row> data=new ArrayList<>();
-        int[] imageArray={R.mipmap.ic_launcher,R.mipmap.ic_launcher,R.mipmap.ic_launcher,R.mipmap.ic_launcher};
-        String[] Data={"Data1","Data2","Data3","Data4"};
-        for(int i=0;i<100;i++){
-            Single_Row current=new Single_Row(imageArray[i%Data.length],Data[i%Data.length]);
+    public List<Single_Row_Navigation> getData(){
+        List<Single_Row_Navigation> data=new ArrayList<>();
+        int[] imageArray={R.mipmap.ic_launcher};
+//        String[] Data={"Fake Activity","Tabs with Library","Card View","RecycleViewAnimator"};
+        String[] Data=getResources().getStringArray(R.array.Menu_Items);
+
+        for(int i=0;i<Data.length;i++){
+            Single_Row_Navigation current=new Single_Row_Navigation(imageArray[0],Data[i]);
             data.add(current);
         }
         return data;
@@ -153,57 +169,6 @@ public class Navigation_Fragment extends Fragment {
         SharedPreferences sharedPref=context.getSharedPreferences(File_Name, Context.MODE_PRIVATE);
         return sharedPref.getString(preferenceName,defaultValue);
     }
-    class RecycleTouchListener implements RecyclerView.OnItemTouchListener {
-        private GestureDetector gestureDetector;
-        private ClickListener clickListner;
 
-
-        public RecycleTouchListener(Context context, final RecyclerView recyclerView, final ClickListener clickListener) {
-            this.clickListner=clickListener;
-            gestureDetector=new GestureDetector(context,new GestureDetector.SimpleOnGestureListener(){
-                @Override
-                public boolean onSingleTapUp(MotionEvent e) {
-                    return true;
-                }
-
-                @Override
-                public void onLongPress(MotionEvent e) {
-                    super.onLongPress(e);
-                    View child=recyclerView.findChildViewUnder(e.getX(),e.getY());
-                    if(child!=null && clickListener!=null){
-                        clickListener.onLongClick(child,recyclerView.getChildLayoutPosition(child));
-                    }
-                }
-            });
-
-        }
-
-        @Override
-        public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
-//            gestureDetector.onTouchEvent(e);
-            View child=rv.findChildViewUnder(e.getX(),e.getY());
-            if(child!=null && clickListner!=null && gestureDetector.onTouchEvent(e)){
-                clickListner.onClick(child,rv.getChildLayoutPosition(child));
-
-            }
-//            Log.d("yoyo", "onInterceptTouchEvent: "+e);
-            return false;
-        }
-
-        @Override
-        public void onTouchEvent(RecyclerView rv, MotionEvent e) {
-//            Log.d("yoyo", "onTouchEvent: ");
-
-        }
-
-        @Override
-        public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-
-        }
-    }
-    public static interface ClickListener{
-        public void onClick(View view,int position);
-        public void onLongClick(View view,int position);
-    }
 
 }

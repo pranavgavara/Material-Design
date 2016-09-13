@@ -3,11 +3,12 @@ package com.pranav.materialdesigncardview;
 /**
  * Created by Pranav on 8/23/2016.
  */
-public class Single_Row {
+public class Single_Row_Navigation {
     int iconID;
     String title;
 
-    public Single_Row(int iconID, String title) {
+
+    public Single_Row_Navigation(int iconID, String title) {
         this.iconID = iconID;
         this.title = title;
     }
