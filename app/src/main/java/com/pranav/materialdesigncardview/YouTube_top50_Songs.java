@@ -119,6 +119,7 @@ public class YouTube_top50_Songs extends Fragment implements SwipeRefreshLayout.
 
     @Override
     public void onRefresh() {
+        list_top50=new ArrayList<>();
         downloadData_Retrofit();
         Toast.makeText(getActivity(),"Refreshed video list",Toast.LENGTH_LONG).show();
     }
@@ -161,9 +162,7 @@ public class YouTube_top50_Songs extends Fragment implements SwipeRefreshLayout.
 
     @Override
     public void onYouTubeVideosLoaded(ArrayList<singleRowYouTube_normal> listVideos) {
-        if(swipeRefreshLayout_top50.isRefreshing()){
-            swipeRefreshLayout_top50.setRefreshing(false);
-        }
+
 
         if(listVideos.get(0)!=null){
             list_top50.add(listVideos.get(0));
@@ -171,6 +170,9 @@ public class YouTube_top50_Songs extends Fragment implements SwipeRefreshLayout.
 
         if(list_top50.size()==50){
             setadapter(list_top50);
+            if(swipeRefreshLayout_top50.isRefreshing()){
+                swipeRefreshLayout_top50.setRefreshing(false);
+            }
         }
     }
 

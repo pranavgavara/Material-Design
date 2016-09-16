@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Handler;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -31,6 +32,7 @@ import tabs.SlidingTabLayout;
 public class MainActivity extends AppCompatActivity {
     private static final int JOB_ID = 100;
     Toolbar toolbar;
+
     Navigation_Fragment navigation_fragment;
     private ViewPager mPager;
     private SlidingTabLayout mtabs;
@@ -45,7 +47,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
         setContentView(R.layout.activity_main);
-        toolbar= (Toolbar) findViewById(R.id.app_bar);
+
+        toolbar= (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 //        YoYo.with(Techniques.BounceInDown)
@@ -77,13 +80,13 @@ public class MainActivity extends AppCompatActivity {
         mtabs.setViewPager(mPager);
 
 
-        ImageView icon = new ImageView(this); // Create an icon
-        icon.setImageResource(R.mipmap.ic_launcher);
-
-        FloatingActionButton actionButton = new FloatingActionButton.Builder(this)
-                .setContentView(icon)
-                .setBackgroundDrawable(R.drawable.button_action_dark)
-                .build();
+//        ImageView icon = new ImageView(this); // Create an icon
+//        icon.setImageResource(R.mipmap.ic_launcher);
+//
+//        FloatingActionButton actionButton = new FloatingActionButton.Builder(this)
+//                .setContentView(icon)
+//                .setBackgroundDrawable(R.drawable.button_action_dark)
+//                .build();
 
 //        SubActionButton.Builder itemBuilder = new SubActionButton.Builder(this);
 //        SubActionButton button1 = itemBuilder.setContentView(icon).build();
