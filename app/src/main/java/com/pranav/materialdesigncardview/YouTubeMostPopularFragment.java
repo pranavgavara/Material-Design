@@ -25,7 +25,7 @@ public class YouTubeMostPopularFragment extends Fragment implements YoutubeVideo
     private ArrayList<Single_Row_YouTube_mostpopular_gson> youTube_list=new ArrayList<>();
     private Single_Row_YouTube_mostpopular_gson youtube_Video;
     private RecyclerView most_popular_list_recyclerView;
-    private Adapter_mostpopularlist adapter_mostpopularlist;
+    private Adapter_YouTubeLists adapter_mostpopularlist;
     ArrayList<singleRowYouTube_normal> list_mostpopular=new ArrayList<>();
     TextView volleyErrorText;
     private SwipeRefreshLayout swipeRefreshLayout;
@@ -39,7 +39,7 @@ public class YouTubeMostPopularFragment extends Fragment implements YoutubeVideo
         most_popular_list_recyclerView= (RecyclerView) view.findViewById(R.id.youtube_mostPopular_list);
         volleyErrorText= (TextView) view.findViewById(R.id.textVolleyError);
         most_popular_list_recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        adapter_mostpopularlist=new Adapter_mostpopularlist(getContext());
+        adapter_mostpopularlist=new Adapter_YouTubeLists(getContext());
         swipeRefreshLayout= (SwipeRefreshLayout) view.findViewById(R.id.swiperefreshvideos);
         swipeRefreshLayout.setOnRefreshListener(this);
         most_popular_list_recyclerView.setAdapter(adapter_mostpopularlist);

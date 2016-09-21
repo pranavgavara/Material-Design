@@ -1,7 +1,5 @@
 package com.pranav.materialdesigncardview;
 
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
 import android.view.View;
 
 import com.daimajia.androidanimations.library.Techniques;
@@ -15,7 +13,7 @@ public class AnimateUtils {
 
 
 
-    public static void animate(Adapter_mostpopularlist.ViewHolderMostPopular holder,boolean goesdown) {
+    public static void animate(Adapter_YouTubeLists.ViewHolderMostPopular holder, boolean goesdown) {
 //        AnimatorSet animaterset=new AnimatorSet();
 //        ObjectAnimator animatorTranslateY=new ObjectAnimator().ofFloat(holder.itemView,"translationY",goesdown==true?100:-100,0);
 //        ObjectAnimator animatorTranslateX=new ObjectAnimator().ofFloat(holder.itemView,"translationX",-50,50,-40,40,-30,30,-20,20,-10,10,0);

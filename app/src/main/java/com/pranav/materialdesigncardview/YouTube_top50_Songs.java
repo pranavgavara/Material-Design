@@ -19,10 +19,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -30,7 +26,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.GET;
 
 /**
  * Created by Pranav on 9/11/2016.
@@ -40,7 +35,7 @@ public class YouTube_top50_Songs extends Fragment implements SwipeRefreshLayout.
     private SwipeRefreshLayout swipeRefreshLayout_top50;
     private static final String TOP_SONGS ="top_songs" ;
     private RecyclerView youTube_top50_songs;
-    private Adapter_mostpopularlist adapter_top50;
+    private Adapter_YouTubeLists adapter_top50;
     public final String URL="http://ws.audioscrobbler.com";
     String track_name;
     String artist_name;
@@ -56,7 +51,7 @@ public class YouTube_top50_Songs extends Fragment implements SwipeRefreshLayout.
         swipeRefreshLayout_top50= (SwipeRefreshLayout) view.findViewById(R.id.swiperefreshvideostop50);
         youTube_top50_songs= (RecyclerView) view.findViewById(R.id.youtube_top50);
         youTube_top50_songs.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter_top50=new Adapter_mostpopularlist(getContext());
+        adapter_top50=new Adapter_YouTubeLists(getContext());
         swipeRefreshLayout_top50.setOnRefreshListener(this);
         youTube_top50_songs.setAdapter(adapter_top50);
         list_top50=new ArrayList<>();

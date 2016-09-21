@@ -1,7 +1,8 @@
 package com.pranav.materialdesigncardview;
 
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -10,12 +11,17 @@ import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 
+import java.util.ArrayList;
+
 public class YouTubePlayerActivity extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener {
     TextView finalvideoTitle;
     YouTubePlayerView youTubePlayerView;
     String API_Key="AIzaSyBnwD7oP-j38RUdYTQuV0C3rcE4_MHXNac";
     String Video_ID;
-    Toolbar toolbar;
+    private RecyclerView SuggestedVideo_list;
+    private Adapter_YouTubeLists adapter_suggestedVideos;
+    private ArrayList<singleRowYouTube_normal> list_suggestedVideos=new ArrayList<>();
+
 
 
     @Override
@@ -28,7 +34,12 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements YouTub
         youTubePlayerView.initialize(API_Key,this);
         finalvideoTitle.setText(Results.getTitle());
         Video_ID=Results.getId();
-        toolbar = (Toolbar) findViewById(R.id.app_bar3);
+        SuggestedVideo_list= (RecyclerView) findViewById(R.id.suggestedVideos);
+        adapter_suggestedVideos=new Adapter_YouTubeLists(this);
+        SuggestedVideo_list.setLayoutManager(new LinearLayoutManager(this));
+        SuggestedVideo_list.setAdapter(adapter_suggestedVideos);
+        
+        adapter_suggestedVideos.setYouTube_list(list_suggestedVideos);
 
 
     }

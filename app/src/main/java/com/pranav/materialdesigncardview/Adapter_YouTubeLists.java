@@ -16,7 +16,7 @@ import java.util.ArrayList;
 /**
  * Created by Pranav on 8/29/2016.
  */
-public class Adapter_mostpopularlist extends RecyclerView.Adapter<Adapter_mostpopularlist.ViewHolderMostPopular> {
+public class Adapter_YouTubeLists extends RecyclerView.Adapter<Adapter_YouTubeLists.ViewHolderMostPopular> {
     private LayoutInflater layoutInflater;
     private ArrayList<singleRowYouTube_normal> YouTube_list=new ArrayList<>();
     private VolleySingleton volleySingleton;
@@ -24,7 +24,7 @@ public class Adapter_mostpopularlist extends RecyclerView.Adapter<Adapter_mostpo
     private int previous_position=0;
 
 
-    public Adapter_mostpopularlist(Context context) {
+    public Adapter_YouTubeLists(Context context) {
         layoutInflater=layoutInflater.from(context);
         volleySingleton=VolleySingleton.getInstance();
         imageLoader= volleySingleton.getmImageLoader();
